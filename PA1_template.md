@@ -1,5 +1,7 @@
 # Reproducible Research: Peer Assessment 1
 
+This is Peer Assessment 1 of the Coursera **Reproducible Research** course.  
+This document analyzes data collected from a personal activity monitoring device over a two months period (October and November, 2012). The observations are related to the number of steps walked each day, taken at 5-minute intervals over the day. 
 
 ## Loading and preprocessing the data
 The **activity.csv** data file containing the observations is read and the **act** dataset is created:
@@ -93,7 +95,7 @@ median(aggByDate$steps, na.rm=TRUE)
 
 
 ## What is the average daily activity pattern?
-In order to perform this analysis, a new dataset is created, having an aggregation of the steps taken by each of the 5-minutes interval during the day.
+In order to perform this analysis, a new dataset is created, having an aggregation of the steps taken by each of the 5-minute intervals during the day.
 The aggregation function will be the *mean* in this case, as we want to have the average number of steps taken by increment:
 
 ```r
@@ -266,15 +268,15 @@ aggWEbyInt <- aggregate(actWE["steps"],
           FUN="mean")
 ```
 
-Finally, the plot is generated:
+Finally, the panel plot is generated:
 
 ```r
 par(mfrow=c(2,1))
 par(cex = 0.6)
-plot(aggWDbyInt, axes=FALSE, type="l", main="Average number of steps taken (averaged across all days)versus the 5-minute intervals\n\nweekday", xlab="",
+plot(aggWEbyInt, axes=FALSE, type="l", main="Average number of steps taken (averaged across all days)versus the 5-minute intervals\n\nweekend", xlab="",
      ylab="average steps")
 axis(2, col="grey40", col.axis="grey20", at=seq(0, 250, 50))
-plot(aggWEbyInt, axes=FALSE, type="l", main="weekend", xlab="5-minute intervals",
+plot(aggWDbyInt, axes=FALSE, type="l", main="weekday", xlab="5-minute intervals",
      ylab="average steps")
 axis(1, at=seq(0, 2500, 500))
 axis(2, at=seq(0, 250, 50))
@@ -284,7 +286,7 @@ axis(2, at=seq(0, 250, 50))
 
 ---
 By comparing the two plots, one may get the idea that the observations are taken from a person having a sedentary work. In the central part of the weekdays the average number of steps is consistently lower than that performed during the weekends. The high activity during the weekends might also refer to the fact that the person is profiting of the weekends for fitness related activities.  
-**end of document**
+**end of document - 20150209**
 
 
 
